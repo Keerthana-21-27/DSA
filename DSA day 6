@@ -1,0 +1,133 @@
+###Searching and manipulations in an array
+#1.checking if an element is present in an array or not
+arr=[]
+n=int(input("Enter the size of array:"))
+print("Enter elements:")
+for i in range(n):
+    arr.append(int(input()))
+target=int(input("Enter the element u want to find:"))  #arr.index(target) to find the index
+if target in arr:
+    print(target,"is found")
+else:
+    print(target,"is not found")
+
+#2.to find elements without built-in functions
+arr=[]
+n=int(input("Enter the size of array:"))
+print("Enter elements:")
+for i in range(n):
+    arr.append(int(input()))
+target=int(input("Enter the element u want to find:"))
+found=False
+for i in range(n):
+    if target in arr:
+        print(target,"is found at index",i)
+        found=True
+        break
+    else:
+        print(target,"is not found")
+
+#3.Count of an element
+arr=[]
+n=int(input("Enter the size of array:"))
+print("Enter elements:")
+for i in range(n):
+    arr.append(int(input()))
+target=int(input("Enter the element u want to find:"))
+found=False
+c=0
+for i in range(n):
+    if arr[i]==target:
+        c+=1
+    found=True
+print(target,"is found")
+if found==False:
+    print(target,"is not found")
+print("Count of",target,"is",c)
+
+#4.finding the occurences or searching an element in matrix
+r=int(input("Enter rows:"))
+c=int(input("Enter cols:"))
+arr=[]
+print("Enter elements:")
+for i in range(r):
+    row=[]
+    for j in range(c):
+        row.append(int(input()))
+    arr.append(row)
+target=int(input("Enter the element u want to search:"))
+found=False
+for i in range(r):
+    for j in range(c):
+        if arr[i][j]==target:
+            print("Target coordinates are:",i,j)
+            found=True
+if found==False:
+    print("Element not found")
+#Spiral order traversal
+n=int(input("Enter the size:"))
+a=[[0] *n for _ in range(n)]
+print(a)
+top=0
+bottom=n-1
+left=0
+right=n-1
+num=1
+while top<=bottom and left<=right:
+    #traverse at top from left -> right
+    for i in range(left,right+1):
+        a[top][i]=num
+        num+=1
+    top+=1
+    #traverse at right from top->bottom
+    for i in range(top,bottom+1):
+        a[i][right]=num
+        num+=1
+    right-=1
+    #traverse at bottom from right -> left
+    for i in range(right,left-1,-1):
+        a[bottom][i]=num
+        num+=1
+    bottom-=1
+    #traverse at left from bottom -> top
+    for i in range(bottom,top-1,-1):
+        a[i][left]=num
+        num+=1
+    left+=1
+for row in a:
+    for val in row:
+        print(f"{val:3}",end=' ')
+    print()
+
+#traverse the matrix in a spiral order and print the path
+r=int(input("Enter no of rows:"))
+c=int(input("Enter no of columns:"))
+a=[]
+print("Enter matrix elements:")
+for i in range(r):
+    row=[]
+    for j in range(c):
+        row.append(int(input()))
+    a.append(row)
+top=0
+bottom=r-1
+left=0
+right=c-1
+num=1
+while top<=bottom and left<=right:
+    #traverse at top from left -> right
+    for i in range(left,right+1):
+        print(a[top][i],end=' ')
+    top+=1
+    #traverse at right from top->bottom
+    for i in range(top,bottom+1):
+        print(a[i][right],end=' ')
+    right-=1
+    #traverse at bottom from right -> left
+    for i in range(right,left-1,-1):
+        print(a[bottom][i],end=' ')
+    bottom-=1
+    #traverse at left from bottom -> top
+    for i in range(bottom,top-1,-1):
+        print(a[i][left],end=' ')
+    left+=1
