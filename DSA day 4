@@ -1,0 +1,107 @@
+###Recursion 
+#1.Direct recursion--- code to print n natural numbers using direct recursion
+def numbers(n):
+    if n==0:
+        return
+    print(n,end=' ')
+    numbers(n-1)
+n=int(input("Enter a number:"))
+numbers(n)
+
+#2.Indirect recursion--- Code to check the given number is even or odd using in-direct recursion
+def even(n):
+    if n==0:
+        print("Even")
+        return
+    odd(n-1) 
+def odd(n):
+    if n==0:
+        print("Odd")
+        return
+    even(n-1) 
+n=int(input("Enter a number:"))
+even(n)
+
+#Tree recursion--- code for Fibonacci number
+def fib(n):
+    if n<=1:
+        return n
+    return fib(n-1)+fib(n-2)
+n=int(input("Enter a number:"))
+print("Fibonacci:",fib(n))
+
+###Approaches
+#1.math approach
+num=int(input("Enter a value:"))
+if num%2==1:
+    print(num,"is odd")
+else:
+    print(num,"is even")
+
+#2.Naive approach
+arr=list(map(int, input("Enter elements").split()))
+largest=arr[0]
+for i in range(len(arr)):
+    if arr[i]>largest:
+        largest= arr[i]
+print("Largest:",largest)
+
+#3.Brute force
+arr=list(map(int, input("Enter elements:").split()))
+target=int(input("Enter target:"))
+found=False
+for i in range(len(arr)):
+    for j in range(i+1,len(arr)):
+        if arr[i]+arr[j]==target:
+            print("Pair found at:",i,j)
+            print("Pair found at:",arr[i],arr[j])
+            found=True
+    if found:
+        break
+if not found:
+    print("No pair found")
+
+#4.Greedy approach
+coins=list(map(int,input("Enter elements:").split()))
+amount=int(input("Enter target:"))
+print("Coins used:")
+for coin in coins:
+    while amount>=coin:
+        print(coin, end=' ')
+        amount -= coin
+
+#5.Backtracking approach
+def genrate(s,n):
+    if len(s)==n:
+        print(s)
+        return
+    genrate(s+'0', n)
+    genrate(s+'1', n)
+    
+n=int(input("Enter length:"))
+genrate("",n)
+
+###Array data structure 1D:
+#Code to read n values and traverse those values and print them
+n=int(input("Enter size of array:"))
+arr=[]
+for i in range(n):
+    num=int(input("Enter a value:"))
+    arr.append(num)
+print("Array elements:")
+for i in range(n):
+    print(arr[i],end=' ')
+print(*arr)
+
+#Code to read n values and traverse and summate those values and print them
+n=int(input("Enter size of array:"))
+arr=[]
+sum=0
+for i in range(n):
+    num=int(input("Enter a value:"))
+    arr.append(num)
+print("Array elements:")
+for i in range(n):
+    sum=sum+arr[i]
+print(sum)
+
