@@ -1,0 +1,81 @@
+###Time complexity and space complexity
+#constant time O(1)
+num=int(input("Enter a number:"))
+print("Square of a number:",num**2)
+
+#linear time O(n)
+n=int(input("Enter a number:"))
+for i in range(1,n+1):
+    print(i)
+
+#Quadratic time O(n^2)
+n=int(input("Enter a number:"))
+for i in range(1,n+1):
+    for j in range(1,n+1):
+        print(i,end=' ')
+    print()
+
+#logarithemic time O(log n)
+n=int(input("Enter a number:"))
+while n>1:
+    print(n)
+    n//=2
+
+#independent time O(2n)
+n=int(input("Enter a number:"))
+for i in range(n):
+    print(i,end=' ')
+for j in range(n):
+    print(j,end=' ')
+
+#best time O(n//2)
+n=int(input("Enter a number:"))
+for i in range(n//2):
+    print(i,end=' ')
+
+#constant + linear time O(n+2)
+n=int(input("Enter a number:"))
+for i in range(n):
+    print(i,end=' ')
+print("HI")
+print("students")
+
+#Exponential time O(2^n)
+def abc(n):
+    if n==0:
+        return
+    print(n)
+    abc(n-1)
+    abc(n-1)
+n=int(input("Enter a number:"))
+abc(n)    
+###functions
+#arg pass return value
+def summate(a,b):
+    return a+b
+num1=int(input("Enter a first value:"))
+num2=int(input("Enter a second value:"))
+result=summate(num1,num2)
+print("Sum:",result)
+
+#arg pass no return value
+def summate(a,b):
+    print("Sum:",a+b)
+num1=int(input("Enter a first value:"))
+num2=int(input("Enter a second value:"))
+summate(num1,num2)
+
+#no arg pass return value
+def summate():
+    num1=int(input("Enter a first value:"))
+    num2=int(input("Enter a second value:"))
+    return num1+num2
+result=summate()
+print("Sum:",result)
+
+#no arg pass no return value
+def summate():
+    num1=int(input("Enter a first value:"))
+    num2=int(input("Enter a second value:"))
+    print("Sum:",num1+num2)
+summate()
