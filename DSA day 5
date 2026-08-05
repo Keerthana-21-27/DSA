@@ -1,0 +1,153 @@
+#Code to read n values,traverse,summate and avg those values and print them
+n=int(input("Enter size of array:"))
+arr=[]
+sum=0
+for i in range(n):
+    num=int(input("Enter a value:"))
+    arr.append(num)
+print("Array elements:")
+for i in range(n):
+    sum=sum+arr[i]
+    avg=sum/n
+print(sum)
+print(avg)
+
+#Code to read n values and print the max element
+n=int(input("Enter size of array:"))
+arr=[]
+sum=0
+for i in range(n):
+    num=int(input("Enter a value:"))
+    arr.append(num)
+maximum=arr[0]
+for i in range(n):
+    if arr[i]>maximum:
+        maximum=arr[i]
+print(maximum)
+
+#Code to read n values and print the min element
+n=int(input("Enter size of array:"))
+arr=[]
+sum=0
+for i in range(n):
+    num=int(input("Enter a value:"))
+    arr.append(num)
+minimum=arr[0]
+for i in range(n):
+    if arr[i]<minimum:
+        minimum=arr[i]
+print(minimum)
+
+#Code to read n values and traverse those values and print the counts of even and odd numbers and count them
+#arr=[12,3,5,7,9,2] even count=2 and odd count=4
+n=int(input("Enter size of array:"))
+arr=[]
+evencount,oddcount=0,0
+for i in range(n):
+    num=int(input("Enter a value:"))
+    arr.append(num)
+for i in range(n):
+    if arr[i]%2==0:
+        evencount+=1
+    else:
+        oddcount+=1
+print("evencount:",evencount)
+print("oddcount:",oddcount)
+
+#Code to read n values and traverse those values and print the counts of +ve and -ve numbers and count them
+n=int(input("Enter size of array:"))
+arr=[]
+poscount,negcount=0,0
+for i in range(n):
+    num=int(input("Enter a value:"))
+    arr.append(num)
+for i in range(n):
+    if arr[i]>0:
+        poscount+=1
+    else:
+        negcount+=1
+print("Positive count:",poscount)
+print("Negative count:",negcount)
+
+#reverse an bytearray
+n=int(input("Enter no of elements:"))
+arr=[]
+for i in range(n):
+    val=int(input("Enter a value:"))
+    arr.append(val)
+print("Original array:")
+for i in arr:
+    print(i,end=" ")
+print()
+print("Reversed array:")
+i=n-1
+while i>=0:
+    print(arr[i],end=' ')
+    i-=1
+
+#code to rotate an array to left
+n=int(input("Enter no of elements:"))
+arr=[]
+for i in range(n):
+    val=int(input("Enter a value:"))
+    arr.append(val)
+print("Original array:")
+for i in arr:
+    print(i,end=" ")
+print()
+print("Rotated to left array:") 
+first=arr[0]
+for i in range(0,n-1):
+    arr[i]=arr[i+1]
+arr[n-1]=first
+for i in range(n):
+    print(arr[i], end=' ')
+
+#code to rotate an array to right
+n=int(input("Enter no of elements:"))
+arr=[]
+for i in range(n):
+    val=int(input("Enter a value:"))
+    arr.append(val)
+print("Original array:")
+for i in arr:
+    print(i,end=" ")
+print()
+print("Rotated to right array:") 
+last=arr[n-1]
+for i in range(n-1,0,-1):
+    arr[i]=arr[i-1]
+arr[0]=last
+for i in range(n):
+    print(arr[i], end=' ')
+
+#code to insert an element in an array wrt pos value
+n=int(input("Enter no of elements:"))
+arr=[]
+for i in range(n):
+    val=int(input("Enter a value:"))
+    arr.append(val)
+print("Original array:")
+for i in arr:
+    print(i,end=' ')
+print()
+pos=int(input("Enter the position:"))
+value=int(input("Enter the value of position:"))
+arr.insert(pos,value)
+print("Latest array after deleting an element:")
+for i in arr:
+    print(i,end=' ')
+print()
+pos=int(input("Enter the position to delete:"))
+arr.pop(pos)
+print("Latest array after deleting an element:")
+for i in arr:
+    print(i, end=' ')
+print()
+pos=int(input("Enter the position to modify:"))
+value=int(input("Enter the value of position:"))
+arr[pos]=value
+print("Latest array after deleting an element:")
+for i in arr:
+    print(i,end=' ')
+print()
