@@ -138,3 +138,92 @@ n=int(input("Enter array size:"))
 arr=list(map(int,input("Enter the elements:").split()))
 pancakesort(arr)
 print("Sorted array:",*arr)
+
+###Binary search variations
+#1. find a square root of a number using binary search pattern
+n=int(input("Enter a value:"))
+left=0
+right=n
+ans=0
+while left<=right:
+    mid=(left+right)//2
+    if mid*mid==n:
+        ans=mid
+        break
+    elif mid*mid<n:
+        ans=mid
+        left=mid+1
+    else:
+        right=mid-1
+print("Square root:",ans)
+
+#2. Find the first occurrence of a target valuearr=list(map(int,input("Enter elements:").split()))
+left=0
+right=len(arr)-1
+target=int(input("Enter target:"))
+ans=-1
+while left<=right:
+    mid=(left+right)//2
+    if arr[mid]==target:
+        ans=mid
+        right=mid-1
+    elif arr[mid]<target:
+        left=mid+1
+    else:
+        right=mid-1
+print("First occurrence of:",target,"=",ans)
+
+#3. Find the last occurrence of a number string
+arr=list(map(int,input("Enter elements:").split()))
+left=0
+right=len(arr)-1
+target=int(input("Enter target:"))
+ans=-1
+while left<=right:
+    mid=(left+right)//2
+    if arr[mid]==target:
+        ans=mid
+        left=mid+1
+    elif arr[mid]<target:
+        left=mid+1
+    else:
+        right=mid-1
+print("Last occurrence of:",target,"=",ans) 
+
+#3. Find the count occurrence of a number using binary search pattern
+#find the count a number using binary search pattern
+arr=list(map(int,input("Enter elements: ").split()))
+left=0
+right=len(arr)-1
+target=int(input("Enter target"))
+first= -1
+while left<=right:
+  mid=(left+right)//2
+  if arr[mid]==target:
+    first=mid
+    right=mid-1
+  elif arr[mid]<target:
+    left=mid+1
+  else:
+    right=mid-1
+print("First occurance index of: ",target, "=",first)
+#last occurance
+left=0
+right=len(arr)-1
+
+last= -1
+while left<=right:
+  mid=(left+right)//2
+  if arr[mid]==target:
+    last=mid
+    left=mid+1
+  elif arr[mid]<target:
+    left=mid+1
+  else:
+    right=mid-1
+print("last occurance index of: ",target, "=",last)
+if first== -1:
+  print("count: ",0)
+else:
+  print("count: ",last-first+1)
+
