@@ -1,0 +1,142 @@
+###Stack
+#stack insert operation
+stack=[]
+n=int(input("Enter number of elements:"))
+for i in range(n):
+    val=int(input("Enter value:"))
+    stack.append(val)
+print("Stack:",stack)
+-----or-----
+stack=[]
+size=int(input("Enter stack size:"))
+n=int(input("Enter number of elements you want to push:"))
+for i in range(n):
+    if len(stack)<size:
+        val=int(input("Enter value:"))
+        stack.append(val)
+    else:
+        print("Stack over flow")
+print("Stack:",stack)
+
+##Pop operation included
+stack=[]
+size=int(input("Enter stack size:"))
+n=int(input("Enter number of elements you want to push:"))
+for i in range(n):
+    if len(stack)<size:
+        val=int(input("Enter value:"))
+        stack.append(val)
+    else:
+        print("Stack over flow")
+print("Stack:",stack)
+print("Peek element:",stack[-1])
+print("Removed from stack:",stack.pop())
+print("Stack:",stack)
+print("Peek element:",stack[-1])
+
+##Pop all at a time
+stack=[]
+size=int(input("Enter stack size:"))
+n=int(input("Enter number of elements you want to push:"))
+for i in range(n):
+    if len(stack)<size:
+        val=int(input("Enter value:"))
+        stack.append(val)
+    else:
+        print("Stack over flow")
+while True:
+    if len(stack)==0:
+        print("Stack empty")
+        break
+    else:
+        print("Popped:",stack.pop())
+        print("Latest stack",stack)
+
+##merging of two stacks
+stack1=[]
+stack2=[]
+merged=[]
+n1=int(input("Enter number of elements in stack 1:"))
+for i in range(n1):
+    val=int(input("Enter value:"))
+    stack1.append(val)
+n2=int(input("Enter number of elements in stack 2:"))
+for i in range(n2):
+    val=int(input("Enter value:"))
+    stack2.append(val)
+'''for i in range(len(stack1)):
+    merged.append(stack1[i])
+    merged.append(stack2[i])'''
+for i in range(len(stack1)):
+    print(stack1[i],end=' ')
+    print(stack2[i],end=' ')
+print("Merged stack:",merged)
+
+##infix to prefix conversion using stacks
+def precedence(op):
+    if op=='+' or op=='-':
+        return 1
+    if op=='*' or op=='/':
+        return 2
+    if op=='^':
+        return 3
+    return 0
+def infoixtoprefix(expression):
+    stack=[]
+    output=[]
+    expression=expression[::-1]
+    for ch in expression:
+        if ch.isalnum():
+            output.append(ch)
+        else:
+            while stack and precedence(ch)<precedence(stack[-1]):
+                output.append(stack.pop())
+            stack.append(ch)
+    while stack:
+        output.append(stack.pop())
+    return ''.join(output[::-1])
+expression=input("Enter expression:")
+prefix=infoixtoprefix(expression)
+print(prefix)
+
+#infix to postfix conversion using stacks
+def precedence(op):
+    if op=='+' or op=='-':
+        return 1
+    if op=='*' or op=='/':
+        return 2
+    if op=='^':
+        return 3
+    return 0
+def infixtopostfix(expression):
+    stack=[]
+    output=[]
+    for ch in expression:
+        if ch.isalnum():
+            output.append(ch)
+        else:
+            while stack and precedence(ch)<precedence(stack[-1]):
+                output.append(stack.pop())
+            stack.append(ch)
+    while stack:
+        output.append(stack.pop())
+    return ''.join(output)
+expression=input("Enter expression:")
+postfix=infixtopostfix(expression)
+print(postfix)
+
+#prefix to postfix conversion using stacks
+def prefixtopostfix(expression):
+    stack=[]
+    for ch in expression[::-1]:
+        if ch.isalnum():
+            stack.append(ch)
+        else:
+           operand1=stack.pop()
+           operand2=stack.pop()
+           result=operand1+operand2+ch
+           stack.append(result)
+    return stack.pop()
+expression=input("Enter expression:")
+postfix=prefixtopostfix(expression)
+print(postfix)
