@@ -1,0 +1,142 @@
+###Parentheses
+##Check whether the parentheses are balanced or not
+s=input("Enter parentheses:")
+stack=[]
+for ch in s:
+    if ch=='(':
+        stack.append(ch)
+    elif ch==')':
+        if len(stack)==0:
+            print("Not balanced")
+            break
+        stack.pop()
+else:
+    if len(stack)==0:
+        print("Balanced")
+    else:
+        print("Not balanced")
+
+##Adding parentheses if not balanced
+s=input("Enter parentheses:")
+stack=[]
+result=""
+for ch in s:
+    if ch=='(':
+        stack.append(ch)
+        result+=ch
+    elif ch==')':
+        if stack:
+            stack.pop()
+            result+=ch
+        else:
+            result='('+result+ch
+while stack:
+    result+=')'
+    stack.pop()
+print(result)    
+
+#deleting parentheses if not balanced
+s=input("Enter parentheses:")
+stack=[]
+result=[]
+for ch in s:
+    if ch=='(':
+        stack.append(len(result))
+        result.append(ch)
+    elif ch==')':
+        if stack:
+            stack.pop()
+            result.append(ch)
+        else:
+            continue
+for i in reversed(stack):
+    result.pop(i)
+print("".join(result))
+
+#check parentheses are balanced or not
+s=input("Enter parentheses:")
+stack=[]
+for ch in s:
+    if ch=='(' or ch=='[' or ch=='{':
+        stack.append(ch)
+    elif ch==')' or ch==']' or ch=='}':
+        if not stack:
+            print("Not balanced")
+            break
+        top=stack.pop()
+        if(ch==')' and top!='(') or (ch==']' and top!='[') or (ch=='}' and top!='{'):
+            print("Not balanced")
+            break
+else:
+    if len(stack)==0:
+        print(s,"Balanced")
+    else:
+        print(s,"Not balanced")
+
+###Queue
+#insertion in a queue operation
+from queue import Queue
+q=Queue()
+print("===Queue=Enqueue operation===")
+print("Enter elements-to finish enterinf type stop:")
+while True:
+    item=input("Enter element to Enqueue:")
+    if item.lower()=='stop':
+        break
+    q.put(item)
+    print(f'{item} has been inserted in to Queue')
+    print(f"Queue: {list(q.queue)}\n")
+print("\n Final Queue:", list(q.queue))
+print("Total items:",q.qsize())
+
+#Deletion in a queue operation
+#insertion in a queue operation
+from queue import Queue
+q=Queue()
+print("===Queue-Enqueue operation===")
+print("Enter elements-to finish enterinf type stop:")
+while True:
+    item=input("Enter element to Enqueue:")
+    if item.lower()=='stop':
+        break
+    q.put(item)
+    print(f'{item} has been inserted in to Queue')
+    print(f"Queue: {list(q.queue)}\n")
+print("\n Final Queue:", list(q.queue))
+print("Total items:",q.qsize())
+while not q.empty():
+    confirm=input("Press enter to dequeue the element:")
+    if confirm.lower()=="stop":
+        break
+    item=q.get()
+    print("Dequeued:",item)
+    print("\nRemaining queue:",list(q.queue))
+if q.empty():
+    print("Queue is empty")
+else:
+    print("Final queue:",list(q.queue))
+
+#Peek element
+print("Peek element:",q.queue[0])
+
+#Maximium size- checks whether is it full or not
+from queue import Queue
+q=Queue(maxsize=4)
+print("===Queue-Enqueue operation===")
+print("Enter elements-to finish type stop:")
+print("Maximum size:",q.maxsize)
+print("is the queue initially full",q.full())
+while True:
+    if q.full():
+        print("Queue overflow...")
+        print("Current queue:",list(q.queue))
+        break
+    item=input("Enter element to Enqueue:")
+    if item.lower()=='stop':
+        break
+    q.put(item)
+    print(f'{item} has been inserted in to Queue')
+    print(f"Queue: {list(q.queue)}\n")
+print("\n Final Queue:", list(q.queue))
+print("Total items:",q.qsize())
+print("Peek element:",q.queue[0])
